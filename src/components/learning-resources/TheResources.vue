@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <base-card class="tabs">
     <base-button 
       @click="setSelectedTab('stored-resources')"
       :mode="storeResButtonMode"
@@ -46,6 +46,7 @@ export default {
     return {
       resources: this.storedRessources,
       addResource: this.addResource,
+      deleteResource: this.removeResource,
     }
   },
   computed: {
@@ -69,7 +70,18 @@ export default {
       };
       this.storedRessources.unshift(newRes);
       this.selectedTab = 'stored-resources'
-    }
+    },
+    removeResource(id) {
+      const resIndex = this.storedRessources.findIndex(res => res.id === id);
+      this.storedRessources.splice(resIndex, 1);
+    },
   }
 }
 </script>
+
+<style scoped>
+.tabs {
+  display: flex;
+  justify-content: space-around;
+}
+</style>
