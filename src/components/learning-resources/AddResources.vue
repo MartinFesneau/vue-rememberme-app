@@ -1,5 +1,5 @@
 <template>
-<base-dialog v-if="inputIsInvalid" title="Invalid Input">
+<base-dialog v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
   <template #default>
     <p>Unfortunatly one of your input is invalid.</p>
     <p>Please make sure your entered at least a few characters in each input field</p>
